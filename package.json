@@ -10,7 +10,8 @@
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "unsplash-js": "^6.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,5 +36,6 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "https://api.unsplash.com",
   "homepage": "https://anthonymwangi.github.io/pinterest"
 }

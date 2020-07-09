@@ -1,0 +1,124 @@
+@import './fonts';
+
+@import './palette';
+
+* { box-sizing: border-box }
+
+html{
+  font-size: 20px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 3.75rem;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--dark);
+  background: var(--white);
+  font-family: var(--regular);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  pointer-events: none;
+}
+
+input, select, textarea, button {
+  padding: 0;
+  border: none;
+  outline: none;
+  resize: none;
+  color: var(--white);
+  font-family: inherit;
+}
+
+.noselect {
+  -webkit-tap-highlight-color:transparent;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: darken(#DCDDE4,5);
+}
+
+.App {
+  width: 100%;
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 12rem 1fr;
+
+  * { z-index: 5 }
+
+  .avatar, .logo {
+    @extend .noselect;
+    cursor: pointer;
+    pointer-events: all;
+    transition: all .3s ease-in-out;
+    &:hover { transform: scale(1.1) }
+  }
+
+  .btn {
+    @extend .noselect;
+    display: flex;
+    line-height: 1;
+    cursor: pointer;
+    font-size: .8rem;
+    font-weight: 500;
+    position: relative;
+    align-items: center;
+    color: var(--white);
+    overflow: hidden;
+    border-radius: 2.5rem;
+    padding: .75rem 1.45rem;
+    justify-content: center;
+    letter-spacing: 0.01rem;
+    background: var(--purple);
+    transition: all .1s ease-in-out;
+
+    &:before {
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      z-index: -1;
+      content: '';
+      height: 100%;
+      position: absolute;
+      border-radius: 2.5rem;
+      transition: all .3s ease-in-out;
+      background-color: var(--dark);
+      opacity: .2;
+    }
+
+    &:hover {
+      &:before {
+        width: 100%;
+      }
+    }
+
+    .btn-icon { margin-left: 1rem }
+
+  }
+
+}
+
+@media all and (min-device-width: 320px) and (max-device-width: 720px) {
+
+
+}
