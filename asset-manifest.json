@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/pinterest/static/css/main.3c6b5cad.chunk.css",
+    "main.js": "/pinterest/static/js/main.39b88d5a.chunk.js",
+    "main.js.map": "/pinterest/static/js/main.39b88d5a.chunk.js.map",
+    "runtime-main.js": "/pinterest/static/js/runtime-main.93ae1bf6.js",
+    "runtime-main.js.map": "/pinterest/static/js/runtime-main.93ae1bf6.js.map",
+    "static/js/2.2b1edf8b.chunk.js": "/pinterest/static/js/2.2b1edf8b.chunk.js",
+    "static/js/2.2b1edf8b.chunk.js.map": "/pinterest/static/js/2.2b1edf8b.chunk.js.map",
+    "index.html": "/pinterest/index.html",
+    "precache-manifest.534a14067b5f14a61c91d3811aca8fe7.js": "/pinterest/precache-manifest.534a14067b5f14a61c91d3811aca8fe7.js",
+    "service-worker.js": "/pinterest/service-worker.js",
+    "static/css/main.3c6b5cad.chunk.css.map": "/pinterest/static/css/main.3c6b5cad.chunk.css.map",
+    "static/js/2.2b1edf8b.chunk.js.LICENSE.txt": "/pinterest/static/js/2.2b1edf8b.chunk.js.LICENSE.txt",
+    "static/media/_styles.scss": "/pinterest/static/media/avi.cf000b1f.jpeg",
+    "static/media/logo.svg": "/pinterest/static/media/logo.1166176f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.93ae1bf6.js",
+    "static/js/2.2b1edf8b.chunk.js",
+    "static/css/main.3c6b5cad.chunk.css",
+    "static/js/main.39b88d5a.chunk.js"
+  ]
+}
