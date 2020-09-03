@@ -1,0 +1,9 @@
+.posts-wrapper {
+  gap: 1rem;
+  padding: 1rem;
+  display: grid;
+  padding-top: 2rem;
+  grid-auto-rows: 1px;
+  grid-template-columns: repeat(4,auto);
+
+}

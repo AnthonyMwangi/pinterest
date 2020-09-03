@@ -1,0 +1,67 @@
+#navigation {
+  height: 5rem;
+  display: flex;
+  padding: 0 1rem;
+  align-items: center;
+  background: var(--white);
+  border-bottom: var(--border);
+  justify-content: space-between;
+
+  .search-bar {
+
+    .search-label{
+      font-size: .8rem;
+      font-weight: 600;
+      padding: .5rem .75rem;
+      border-right: var(--border);
+    }
+
+    .search-input {
+      min-width: 20rem;
+      font-weight: 500;
+      padding: .5rem 0;
+      font-size: .75rem;
+      margin-left: 1rem;
+      letter-spacing: 0.01rem;
+      background: transparent;
+      color: darken(#AAAEB1,1);
+      &:focus {
+        color: darken(#AAAEB1,5);
+      }
+    }
+
+  }
+
+  .action-bar {
+    display: flex;
+    font-weight: 700;
+    font-size: 0.75rem;
+    align-items: center;
+    letter-spacing: .01rem;
+
+    .avatar {
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+      justify-content: space-between;
+
+      .image {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        margin-right: .5rem;
+        border: .5px solid transparent;
+        border-color: transparentize(#414C53,0.8);
+        background-image: url(../../images/avi.jpeg);
+      }
+
+    }
+
+    .settings {
+      cursor: pointer;
+      margin-left: 1.25rem;
+    }
+
+  }
+
+}

@@ -2,7 +2,7 @@ import './_styles.scss'
 import React from 'react'
 import Logo from '../../images/logo.svg'
 
-export default function Sidebar({ selected, onClickMenu }) {
+export default function Sidebar({ selected, onClickMenu=()=>{} }) {
 
   const active_item = (!selected) ? 0 : dataset.indexOf(selected);
 

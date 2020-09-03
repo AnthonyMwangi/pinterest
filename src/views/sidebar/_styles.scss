@@ -7,7 +7,7 @@
     position: fixed;
     align-items: center;
     flex-direction: column;
-    background-color: #ffffff;
+    background-color: var(--white);
     border-right: var(--border);
     overflow-y: auto;
   }

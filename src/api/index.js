@@ -1,5 +1,5 @@
-// ES Modules syntax
-import Unsplash, { toJson } from 'unsplash-js';
+import dummypost, { dummy_array } from './dummy'
+import Unsplash, { toJson } from 'unsplash-js'
 
 const unsplash = new Unsplash({
 
@@ -23,5 +23,9 @@ export default {
     return (!!data.error) ? data : { error: null, data };
 
   },
+
+  dummy: async (count=10) => ({data: Array.from(Array(count), () => dummypost)}),
+
+  dummy_array: () => ({ data: dummy_array })
 
 }
