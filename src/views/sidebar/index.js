@@ -2,7 +2,7 @@ import './_styles.scss'
 import React from 'react'
 import Logo from '../../images/logo.svg'
 
-export default function Sidebar({ selected, onClickMenu=()=>{} }) {
+export default function Sidebar({ selected, onSelect = () => ({}) }) {
 
   const active_item = (!selected) ? 0 : dataset.indexOf(selected);
 
@@ -18,7 +18,7 @@ export default function Sidebar({ selected, onClickMenu=()=>{} }) {
             dataset.map((a,i) =>
               <div
                 key={a.value}
-                onClick={() => onClickMenu(a)}
+                onClick={() => onSelect(a)}
                 dangerouslySetInnerHTML={{ __html: a.name }}
                 className={`menu-item ${(i===active_item ? 'active' : '')}`}
               />

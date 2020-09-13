@@ -26,6 +26,6 @@ export default {
 
   dummy: async (count=10) => ({data: Array.from(Array(count), () => dummypost)}),
 
-  dummy_array: () => ({ data: dummy_array })
+  dummy_array: () => ({ data: dummy_array() })
 
 }

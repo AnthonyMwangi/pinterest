@@ -1,6 +1,6 @@
 import './_styles.scss'
 import React from 'react'
-import { Post } from '../../components'
+import { Post, Loader } from '../../components'
 
 export default class PostsWrapper extends React.Component {
 
@@ -9,7 +9,8 @@ export default class PostsWrapper extends React.Component {
     super(props);
 
     this.state = {
-      posts: []
+      posts: [],
+      category: null,
     }
 
     this.grid = null;
@@ -34,7 +35,7 @@ export default class PostsWrapper extends React.Component {
 
   }
 
-  debounce = (callback,duration) => {
+  debounce = (callback, duration) => {
 
     callback()
 
@@ -46,13 +47,13 @@ export default class PostsWrapper extends React.Component {
 
   }
 
-  static getDerivedStateFromProps(props,state) {
+  static getDerivedStateFromProps(props, state) {
 
     const data = props.data.map(a => a.id).toString();
 
     const posts = state.posts.map(a => a.id).toString();
 
-    if (posts!==data) return { posts: props.data, refresh: true };
+    if (posts !== data) return { posts: props.data, refresh: true };
 
     return null;
 
@@ -72,9 +73,29 @@ export default class PostsWrapper extends React.Component {
 
       post.classList.remove("cover");
 
+      const { height, width } = post.dataset;
+
+      const content = post.querySelector('.content');
+
+      const content_height = this.get_grid_value('height', content);
+
+      const content_width = this.get_grid_value('width', content);
+
       const post_wrapper = post.querySelector('.post_wrapper');
 
-      const post_height = this.get_grid_value('height',post_wrapper);
+      const post_image = post_wrapper.querySelector('.image');
+
+      let post_height = this.get_grid_value('height', post_wrapper);
+
+      let image_height = this.get_grid_value('height', post_image);
+
+      if (image_height === 0) {
+
+        image_height = Math.round((content_width / parseInt(width)) * parseFloat(height));
+
+        post_height = image_height + content_height;
+
+      }
 
       const row_span = Math.ceil((post_height + row_gap) / (row_size + row_gap));
 
@@ -90,26 +111,35 @@ export default class PostsWrapper extends React.Component {
 
   random_height = (min, max) => Math.round(Math.random() * (max - min) + min);
 
-  get_grid_value = (property,element=this.grid) => {
+  get_grid_value = (property, element = this.grid) => {
+
+    if (!element) return 0;
+
     let value = getComputedStyle(element).getPropertyValue(property);
-    if (property==='columns') value = value.replace('auto ','');
+
+    if (property === 'columns') value = value.replace('auto ', '');
+
     return parseInt(value, 10);
+
   }
 
   render() {
 
-    const { posts=[] } = this.state;
-
-    const styles = {
-      //gridTemplateRows: `repeat(${2}, auto)`,
-      //gridTemplateColumns: `repeat(auto-fit, minmax(${310}px, 1fr))`
-    }
+    const { posts = [] } = this.state;
 
     return (
-      <div className="posts-wrapper masonry-grid" style={styles}>
-        {
-          posts.map((a, i) => <Post key={i} data={a} />)
-        }
+      <div className="posts-wrapper">
+
+        <div className="grid-title" dangerouslySetInnerHTML={{ __html: this.props.category }} />
+
+        <div className="masonry-grid">
+
+          { !this.props.loading && posts.map((a, i) => <Post key={i} data={a} onSelect={() => this.props.onClickPost(a)} />) }
+
+          { !!this.props.loading && <Loader context={this.props.category}/> }
+
+        </div>
+
       </div>
     )
 

@@ -1,0 +1,39 @@
+.loader {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--muted);
+
+  .icon-wrapper {
+    display: flex;
+    padding: .75rem;
+    border-radius: 50%;
+    background-color: #767676;
+
+    .icon {
+      color: #ffffff;
+      font-size: 1.75rem;
+      animation: spinner 1s linear infinite;
+    }
+
+  }
+
+  .caption {
+    max-width: 20rem;
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: .75rem;
+  }
+
+  @keyframes spinner {
+    to {transform: rotate(360deg);}
+  }
+
+}

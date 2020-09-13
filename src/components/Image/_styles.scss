@@ -1,0 +1,39 @@
+.progressive {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  outline: none;
+  pointer-events: none;
+
+  &:not(.replace) {
+    cursor: default;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    border: 0 none;
+
+    &.preview {
+      filter: blur(2vw);
+      transform: scale(1.05);
+    }
+
+    &.reveal {
+      position: absolute;
+      left: 0;
+      top: 0;
+      will-change: transform, opacity;
+      animation: reveal .3s ease-out;
+    }
+
+  }
+
+  @keyframes reveal {
+    0% {transform: scale(1.05); opacity: 0;}
+    100% {transform: scale(1); opacity: 1;}
+  }
+
+}

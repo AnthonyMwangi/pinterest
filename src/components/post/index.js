@@ -1,18 +1,18 @@
 import './_styles.scss'
 import React from 'react'
+import ProgressiveImage from '../Image'
+
 import {
   RiPushpin2Fill as Pin,
   RiHeartFill as Heart
 } from "react-icons/ri";
 
-
-
-
-export default function Post({ data }) {
+export default function Post({ data, onSelect=()=>{} }) {
 
   if (!data) return null;
 
   const {
+    id,
     likes = 0,
     downloads = 0,
     width = 310,
@@ -20,6 +20,7 @@ export default function Post({ data }) {
     color = '#E7E9F6',
     alt_description = '',
     urls = {
+      thumb: '',
       regular: ''
     },
     user = {
@@ -35,15 +36,18 @@ export default function Post({ data }) {
 
   const title = `Photo by ${user.name || 'Anonymous'}`;
 
+  const first_name_only = user.first_name.replace(/ .*/,'');
+
   return (
-    <div className='post' data-height={height} data-width={width}>
+    <div className='post' data-height={height} data-width={width} onClick={onSelect}>
 
       <div className="post_wrapper">
-        <img
-          src={urls.regular}
-          alt={title}
-          style={styles}
-          className="image noselect"
+
+        <ProgressiveImage
+          id={id}
+          data={urls}
+          title={title}
+          styles={styles}
         />
 
         <div className="content">
@@ -63,7 +67,7 @@ export default function Post({ data }) {
                 className="image noselect avatar"
               />
 
-              <div className="name">{user.first_name}</div>
+              <div className="name">{first_name_only}</div>
 
             </div>
 

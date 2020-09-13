@@ -94,7 +94,11 @@ select:-webkit-autofill:focus {
   display: grid;
   max-width: 100vw;
   min-height: 100vh;
+  max-height: 100vh;
+  position: relative;
   grid-template-columns: 12rem 1fr;
+
+  &.modal-open { overflow: hidden }
 
   * { z-index: 5 }
 
@@ -109,7 +113,7 @@ select:-webkit-autofill:focus {
   .app-body {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 4rem 1fr;
+    grid-template-rows: auto 1fr;
   }
 
   .btn {

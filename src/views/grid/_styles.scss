@@ -1,9 +1,24 @@
 .posts-wrapper {
-  gap: 1rem;
-  padding: 1rem;
   display: grid;
-  padding-top: 2rem;
-  grid-auto-rows: 1px;
-  grid-template-columns: repeat(4,auto);
+  row-gap: 1rem;
+  padding: 1rem;
+  position: relative;
+  grid-template-rows: auto 1fr;
+
+  .grid-title {
+    font-size: 1rem;
+    font-weight: 700;
+    padding-bottom: .25rem;
+    letter-spacing: .01rem;
+    text-transform: capitalize;
+    i { color: var(--primary) }
+  }
+
+  .masonry-grid {
+    gap: 1rem;
+    display: grid;
+    grid-auto-rows: 1px;
+    grid-template-columns: repeat(5,auto);
+  }
 
 }
