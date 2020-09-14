@@ -39,7 +39,7 @@ export default function Post({ data, onSelect=()=>{} }) {
   const first_name_only = user.first_name.replace(/ .*/,'');
 
   return (
-    <div className='post' data-height={height} data-width={width} onClick={onSelect}>
+    <div className='post' data-height={height} data-width={width} onClick={() => onSelect(data)}>
 
       <div className="post_wrapper">
 
@@ -50,7 +50,7 @@ export default function Post({ data, onSelect=()=>{} }) {
           styles={styles}
         />
 
-        <div className="content">
+        <div className="content" style={{ boxShadow: `0px 1px 10px 0px ${color}50` }}>
 
           <div className="title">{title}</div>
 

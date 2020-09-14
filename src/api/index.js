@@ -1,4 +1,4 @@
-import dummypost, { dummy_array } from './dummy'
+import fetch_dummy_data from './dummy'
 import Unsplash, { toJson } from 'unsplash-js'
 
 const unsplash = new Unsplash({
@@ -24,8 +24,16 @@ export default {
 
   },
 
-  dummy: async (count=10) => ({data: Array.from(Array(count), () => dummypost)}),
+  search: async function (keyword='random', count = 30, page=1) {
 
-  dummy_array: () => ({ data: dummy_array() })
+    const search_photo = unsplash.search.photos;
+
+    const data = await search_photo(keyword,page,count).then(toJson).catch(error_handler);
+
+    return (!!data.error) ? data : { error: null, data: data.results };
+
+  },
+
+  dummy: async (count) => ({ data: fetch_dummy_data(count) })
 
 }

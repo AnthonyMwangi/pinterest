@@ -4,6 +4,7 @@
   padding: 1rem;
   position: relative;
   grid-template-rows: auto 1fr;
+  background-color: darken(#FAFAFA,0.5);
 
   .grid-title {
     font-size: 1rem;
@@ -19,6 +20,50 @@
     display: grid;
     grid-auto-rows: 1px;
     grid-template-columns: repeat(5,auto);
+  }
+
+  .load-more {
+    display: flex;
+    margin-top: 5rem;
+    padding-bottom: 5rem;
+    justify-content: center;
+
+    .button {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: .9rem;
+      border-radius: .2rem;
+      padding: .5rem 1rem;
+      border: var(--border);
+      border-width: 2px;
+
+      &.loading {
+        border: none;
+        display: flex;
+        cursor: not-allowed;
+
+        .icon-wrapper {
+          display: flex;
+          padding: .75rem;
+          border-radius: 50%;
+          background-color: #767676;
+
+          .icon {
+            color: #ffffff;
+            font-size: 1.75rem;
+            animation: rotate 1s linear infinite;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  @keyframes rotate {
+    to { transform: rotate(360deg) }
   }
 
 }

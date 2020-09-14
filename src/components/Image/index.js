@@ -43,7 +43,7 @@ export default class ProgressiveImage extends Component {
 
 const add_progressive_listener = (id,full) => {
 
-  if (!!full) return progressive_image_listener(id,full);
+  if (document.readyState==='complete') return progressive_image_listener(id,full);
 
   return window.addEventListener('load', () => progressive_image_listener(id), false);
 

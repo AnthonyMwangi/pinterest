@@ -12,7 +12,11 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       posts: [],
-      category: 'Popular',
+      category: {
+        name: 'Popular',
+        value: 'popular',
+        page: 1
+      },
       selected_post: null,
       loading: true
     }
@@ -20,17 +24,53 @@ export default class App extends React.Component {
 
   componentDidMount = () => this.fetch_api_data();
 
-  fetch_api_data = async (category = { name:'Popular', value:'popular' }) => {
+  fetch_api_data = async () => {
 
-    const { data } = await api.dummy_array(10);
+    const { dummy, photos } = api;
 
-    return this.setState({ posts: data, category: category.name, loading: false, selected_post: null });
+    const { hostname } = window.location;
+
+    const fetch_data = hostname === 'localhost' ? dummy : photos;
+
+    const category = { name: 'Popular', value: 'popular' };
+
+    const { data } = await fetch_data(50);
+
+    return this.load_api_data(data, category);
 
   }
 
+  search_photos = async (category = { name: 'Popular', value: 'popular' }) => {
+
+    this.setState({ loading: true });
+
+    const { value, page=1 } = this.state.category;
+
+    const curr_page = (value === category.value) ? page + 1 : 1;
+
+    const { data } = await api.search(category.value, 30, curr_page);
+
+    return this.load_api_data(data, { ...category, page: curr_page });
+
+  }
+
+  load_more_data = async () => {
+
+    const { posts = [] } = this.state;
+
+    const { name, value, page = 1 } = this.state.category;
+
+    const { data } = await api.search(value, 30, page + 1);
+
+    return this.load_api_data(posts.concat(data), { name, value, page: page + 1 });
+
+  }
+
+  load_api_data = (posts, category) => this.setState({ posts, category, loading: false, selected_post: null })
+
   on_select_category = async (category) => {
 
-    if (this.state.category===category.name) return null;
+    if (this.state.category === category.name) return null;
 
     this.setState({ loading: true });
 
@@ -47,18 +87,22 @@ export default class App extends React.Component {
     return (
       <div className={`App ${this.modal_status()}`}>
 
-        <Sidebar onSelect={this.on_select_category}/>
+        <Sidebar
+          selected={this.state.category.name}
+          onSelect={this.search_photos}
+        />
 
         <div className={`app-body`}>
 
           <Navigation
-            selected={this.state.category}
-            onSearch={this.on_select_category}
+            selected={this.state.category.name}
+            onSearch={this.search_photos}
           />
 
           <Grid
             onClickPost={(selected_post) => this.setState({ selected_post })}
-            category={this.state.category}
+            onClickLoadMoreButton={this.load_more_data}
+            category={this.state.category.name}
             loading={this.state.loading}
             data={this.state.posts}
           />

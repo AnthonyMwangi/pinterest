@@ -1,84 +1,19 @@
-export default {
-  alt_description: "white wooden window with red flowers",
-  categories: [],
-  color: "#190D0B",
-  created_at: "2020-06-17T10:57:28-04:00",
-  current_user_collections: [],
-  description: "Home",
-  downloads: 1537,
-  height: 3000,
-  id: "LYdXESrw4dY",
-  liked_by_user: false,
-  likes: 33,
-  links: {
-    download: "https://unsplash.com/photos/LYdXESrw4dY/download",
-    download_location: "https://api.unsplash.com/photos/LYdXESrw4dY/download",
-    html: "https://unsplash.com/photos/LYdXESrw4dY",
-    self: "https://api.unsplash.com/photos/LYdXESrw4dY",
-  },
-  location: {
-    city: "Sheffield",
-    country: "United Kingdom",
-    name: "Sheffield, UK",
-    position: {
-      latitude: 53.381129,
-      longitude: -1.470085
-    },
-    title: "Sheffield, UK",
-  },
-  promoted_at: "2020-06-17T11:20:34-04:00",
-  sponsorship: null,
-  updated_at: "2020-06-28T01:32:10-04:00",
-  urls: {
-    full: "https://images.unsplash.com/photo-1592405747869-6da5c742b1ab?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjIwNTg4fQ",
-    raw: "https://images.unsplash.com/photo-1592405747869-6da5c742b1ab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjIwNTg4fQ",
-    regular: "https://images.unsplash.com/photo-1592405747869-6da5c742b1ab?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjIwNTg4fQ",
-    small: "https://images.unsplash.com/photo-1592405747869-6da5c742b1ab?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjIwNTg4fQ",
-    thumb: "https://images.unsplash.com/photo-1592405747869-6da5c742b1ab?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjIwNTg4fQ",
-  },
-  user: {
-    accepted_tos: true,
-    bio: "Hey! You're welcome to use my images - please let me know where and when you do - as I'd LOVE to connect. Tag my Instagram account @benjaminjohelliott. If you need a bespoke image get in touch via my website! Thanks! Ben",
-    first_name: "Benjamin",
-    id: "XRPLspcLA5U",
-    instagram_username: "benjaminjohnelliott",
-    last_name: "Elliott",
-    links: {
-      followers: "https://api.unsplash.com/users/benjaminjohnelliott/followers",
-      following: "https://api.unsplash.com/users/benjaminjohnelliott/following",
-      html: "https://unsplash.com/@benjaminjohnelliott",
-      likes: "https://api.unsplash.com/users/benjaminjohnelliott/likes",
-      photos: "https://api.unsplash.com/users/benjaminjohnelliott/photos",
-      portfolio: "https://api.unsplash.com/users/benjaminjohnelliott/portfolio",
-      self: "https://api.unsplash.com/users/benjaminjohnelliott",
-    },
-    location: "Sheffield",
-    name: "Benjamin Elliott",
-    portfolio_url: "http://www.benjaminjohnelliott.com",
-    profile_image: {
-      large: "https://images.unsplash.com/profile-1511262875529-27fd6e32c25e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=128&w=128",
-      medium: "https://images.unsplash.com/profile-1511262875529-27fd6e32c25e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=64&w=64",
-      small: "https://images.unsplash.com/profile-1511262875529-27fd6e32c25e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=32&w=32",
-    },
-    total_collections: 7,
-    total_likes: 9,
-    total_photos: 49,
-    twitter_username: "socialwetalk",
-    updated_at: "2020-07-03T05:18:40-04:00",
-    username: "benjaminjohnelliott",
-  },
-  views: 1077477,
-  width: 4496
-}
+export default (count=30) => {
 
-export const dummy_array = () => {
+  const new_dataset = Array.from(Array(count), (post,i) => {
 
-  const new_dataset = [].concat(dataset);
+    if (i<=dataset.length) post = dataset[i];
 
-  let current_index = dataset.length;
+    if (!post) post = dataset[Math.floor(Math.random() * dataset.length)];
+
+    return post;
+
+  });
+
+  let current_index = new_dataset.length;
 
   // While there remain elements to shuffle...
-  while (0 !== current_index) {
+  while (current_index !== 0) {
 
     // Pick a remaining element...
     const random_index = Math.floor(Math.random() * current_index);
@@ -86,11 +21,11 @@ export const dummy_array = () => {
     current_index -= 1;
 
     // And swap it with the current element.
-    const temporaryValue = dataset[current_index];
+    const temporary_value = new_dataset[current_index];
 
-    dataset[current_index] = dataset[random_index];
+    new_dataset[current_index] = new_dataset[random_index];
 
-    dataset[random_index] = temporaryValue;
+    new_dataset[random_index] = temporary_value;
 
   }
 

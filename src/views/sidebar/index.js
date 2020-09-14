@@ -2,9 +2,7 @@ import './_styles.scss'
 import React from 'react'
 import Logo from '../../images/logo.svg'
 
-export default function Sidebar({ selected, onSelect = () => ({}) }) {
-
-  const active_item = (!selected) ? 0 : dataset.indexOf(selected);
+export default function Sidebar({ selected='', onSelect = () => ({}) }) {
 
   return (
     <div id='sidebar'>
@@ -20,7 +18,7 @@ export default function Sidebar({ selected, onSelect = () => ({}) }) {
                 key={a.value}
                 onClick={() => onSelect(a)}
                 dangerouslySetInnerHTML={{ __html: a.name }}
-                className={`menu-item ${(i===active_item ? 'active' : '')}`}
+                className={`menu-item ${(a.name===selected.toLowerCase() ? 'active' : '')}`}
               />
             )
           }
@@ -52,5 +50,4 @@ const dataset = [
   { name: 'illustrations & posters', value: 'posters' },
   { name: 'mens fashion', value: 'fashion' },
   { name: 'photography', value: 'photography' },
-  { name: '+ More', value: 'explore' }
 ]

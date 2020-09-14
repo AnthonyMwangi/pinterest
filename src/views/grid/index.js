@@ -1,5 +1,6 @@
 import './_styles.scss'
 import React from 'react'
+import { ImSpinner7 } from 'react-icons/im'
 import { Post, Loader } from '../../components'
 
 export default class PostsWrapper extends React.Component {
@@ -123,9 +124,23 @@ export default class PostsWrapper extends React.Component {
 
   }
 
+  on_select_post = (a) => this.props.onClickPost(a);
+
+  on_load_more = async () => {
+
+    if (!!this.state.loading_more) return;
+
+    this.setState({ loading_more: true });
+
+    await this.props.onClickLoadMoreButton();
+
+    return this.setState({ loading_more: false });
+
+  }
+
   render() {
 
-    const { posts = [] } = this.state;
+    const { posts = [], loading_more } = this.state;
 
     return (
       <div className="posts-wrapper">
@@ -134,14 +149,30 @@ export default class PostsWrapper extends React.Component {
 
         <div className="masonry-grid">
 
-          { !this.props.loading && posts.map((a, i) => <Post key={i} data={a} onSelect={() => this.props.onClickPost(a)} />) }
+          {!this.props.loading && posts.map((a, i) => <Post key={i} data={a} onSelect={this.on_select_post} />)}
 
-          { !!this.props.loading && <Loader context={this.props.category}/> }
+          {!!this.props.loading && <Loader context={this.props.category} />}
 
         </div>
+
+        {
+          !this.props.loading && <div className="load-more">
+            <div className={`button ${!loading_more ? 'loaded' : 'loading'}`} onClick={this.on_load_more}>
+              {!this.state.loading_more ? `Load More` : <Spinner />}
+            </div>
+          </div>
+        }
 
       </div>
     )
 
   }
+}
+
+function Spinner() {
+  return (
+    <div className="icon-wrapper">
+      <ImSpinner7 className='icon' />
+    </div>
+  )
 }

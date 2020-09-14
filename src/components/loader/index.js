@@ -11,7 +11,7 @@ export default function Loader({ context='home' }) {
       </div>
 
       <div className="caption">
-        {`We're adding new items to your ${context} feed`}
+        {`We're adding new items to your feed`}
       </div>
 
     </div>
