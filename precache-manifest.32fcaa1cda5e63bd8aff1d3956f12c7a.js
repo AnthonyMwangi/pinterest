@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2ea846ab5f923910fab55c0ca3236ec5",
+    "revision": "5f1f6c91c03b5ffe42b4b5563a0d77be",
     "url": "/pinterest/index.html"
   },
   {
-    "revision": "56c7523d5ee314283889",
-    "url": "/pinterest/static/css/main.c97d3d09.chunk.css"
+    "revision": "a6f368ee1501f84e2584",
+    "url": "/pinterest/static/css/main.20be0317.chunk.css"
   },
   {
-    "revision": "c199256eb4c1c2de6c0b",
-    "url": "/pinterest/static/js/2.58a1d319.chunk.js"
+    "revision": "6c953ff02f2f5b3022a6",
+    "url": "/pinterest/static/js/2.e62d6e09.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/pinterest/static/js/2.58a1d319.chunk.js.LICENSE.txt"
+    "url": "/pinterest/static/js/2.e62d6e09.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "56c7523d5ee314283889",
-    "url": "/pinterest/static/js/main.9d8991a1.chunk.js"
+    "revision": "a6f368ee1501f84e2584",
+    "url": "/pinterest/static/js/main.b9dde7f0.chunk.js"
   },
   {
     "revision": "0a4da94b284a23bd5819",
