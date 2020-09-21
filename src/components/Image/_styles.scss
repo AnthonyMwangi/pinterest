@@ -17,8 +17,10 @@
     border: 0 none;
 
     &.preview {
-      filter: blur(2vw);
-      transform: scale(1.05);
+      &:not(.full) {
+        filter: blur(2vw);
+        transform: scale(1.05);
+      }
     }
 
     &.reveal {

@@ -1,63 +1,51 @@
 import './_styles.scss'
 import React from 'react'
+import Logo from '../../images/logo.svg'
+import { SearchBar } from '../../components'
+import { AiOutlineMenu } from 'react-icons/ai'
 
 export default function Navigation({ onSearch = () => ({}) }) {
 
-  const [keyword, update_keyword] = React.useState('');
+  const [search_state,update_search_state] = React.useState('hidden');
 
-  const on_submit_keyword = (e) => {
+  const toggle_search_state = () => {
 
-    e.persist()
+    const new_state = (search_state==='hidden') ? 'visible' : 'hidden';
 
-    e.preventDefault();
-
-    return onSearch({
-      value: keyword,
-      name: `Search Results: <i>${keyword}</i>`
-    })
-
-  }
-
-  const on_change_keyword = (e) => {
-
-    e.persist();
-
-    const { value } = e.target;
-
-    return update_keyword(value);
+    return update_search_state(new_state);
 
   }
 
   return (
     <div id='navigation'>
 
-      <form className="search-bar" autoComplete='off' onSubmit={on_submit_keyword}>
+      <img src={Logo} alt="logo" className={`app-logo sb-${search_state}`} />
 
-        <label className="search-label" htmlFor="search">Search</label>
+      <div className="nav-wrapper">
 
-        <input
-          id='search'
-          type="text"
-          name='search'
-          className="search-input"
-          onChange={on_change_keyword}
-          placeholder='Enter Search Keyword'
+        <SearchBar
+          onSearch={onSearch}
+          state={search_state}
+          onFocusChange={toggle_search_state}
         />
 
-      </form>
+        <div className={`action-bar sb-${search_state}`}>
 
-      <div className="action-bar">
-
-        <div className="avatar noselect">
-          <div className="image" />
-          <div className="name">
-            <a href="https://dribbble.com/shots/2372254" target="_blank" rel='noopener noreferrer' >
-              Mackenzie Child
+          <div className="avatar noselect">
+            <div className="image" />
+            <div className="name">
+              <a href="https://dribbble.com/shots/2372254" target="_blank" rel='noopener noreferrer' >
+                Mackenzie Child
             </a>
+            </div>
           </div>
-        </div>
 
-        <div className="settings noselect">Settings</div>
+          <div className="settings noselect">
+            <AiOutlineMenu className="icon" />
+            <div className="label">Settings</div>
+          </div>
+
+        </div>
 
       </div>
 

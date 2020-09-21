@@ -3,10 +3,14 @@ import React, { Component } from 'react'
 
 export default class ProgressiveImage extends Component {
 
-  constructor(props) {
-    super(props);
-    this.id = `${this.props.id}-${Math.floor(Math.random() * 0xFFFF) }`;
+  constructor(props, context) {
+
+    super(props, context);
+
     this.component = document.getElementById(this.id);
+
+    this.id = `${this.props.id}-${Math.floor(Math.random() * 0xFFFF) }`;
+
   }
 
   componentDidMount = () => {
@@ -28,13 +32,13 @@ export default class ProgressiveImage extends Component {
     const { data = { thumb:'', regular:'', full:'' }, title='', styles={} } = this.props;
 
     return (
-      <a href={!!this.props.full ? data.full : data.regular } className="progressive replace" id={this.id}>
+      <a href={!!this.props.full ? data.full : data.regular} className="progressive replace" id={this.id}>
         <img
           alt={title}
           style={styles}
           loading={"lazy"}
-          src={data.thumb}
-          className="image noselect preview"
+          src={!!this.props.full ? data.regular : data.thumb }
+          className={`image noselect preview ${!!this.props.full ? 'full' : 'thumb'}`}
         />
       </a>
     )

@@ -53,8 +53,8 @@ export default function ModalPost({ data, close = () => { } }) {
     <div className='modal-post'>
 
       <div className="close-button" onClick={close}>
-          <RiCloseLine className='icon' />
-        </div>
+        <RiCloseLine className='icon' />
+      </div>
 
       <div className="modal-wrapper">
 

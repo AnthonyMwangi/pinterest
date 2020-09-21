@@ -37,3 +37,18 @@
   }
 
 }
+
+@media all and (min-width: 320px) and (max-width: 720px) {
+
+  .loader {
+    padding: 1rem;
+
+    .caption {
+      max-width: 100%;
+      line-height: 1.5;
+      font-size: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+  }
+}

@@ -30,7 +30,7 @@ export default class App extends React.Component {
 
     const { hostname } = window.location;
 
-    const fetch_data = hostname === 'localhost' ? dummy : photos;
+    const fetch_data = ['localhost','192.168.100.50'].includes(hostname) ? dummy : photos;
 
     const category = { name: 'Popular', value: 'popular' };
 
@@ -44,7 +44,7 @@ export default class App extends React.Component {
 
     this.setState({ loading: true });
 
-    const { value, page=1 } = this.state.category;
+    const { value, page = 1 } = this.state.category;
 
     const curr_page = (value === category.value) ? page + 1 : 1;
 
@@ -92,22 +92,18 @@ export default class App extends React.Component {
           onSelect={this.search_photos}
         />
 
-        <div className={`app-body`}>
+        <Navigation
+          selected={this.state.category.name}
+          onSearch={this.search_photos}
+        />
 
-          <Navigation
-            selected={this.state.category.name}
-            onSearch={this.search_photos}
-          />
-
-          <Grid
-            onClickPost={(selected_post) => this.setState({ selected_post })}
-            onClickLoadMoreButton={this.load_more_data}
-            category={this.state.category.name}
-            loading={this.state.loading}
-            data={this.state.posts}
-          />
-
-        </div>
+        <Grid
+          onClickPost={(selected_post) => this.setState({ selected_post })}
+          onClickLoadMoreButton={this.load_more_data}
+          category={this.state.category.name}
+          loading={this.state.loading}
+          data={this.state.posts}
+        />
 
         <Modal
           data={this.state.selected_post}
